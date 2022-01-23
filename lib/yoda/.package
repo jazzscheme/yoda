@@ -1,0 +1,13 @@
+(package yoda
+  
+  (title "Yoda")
+  (description "Yoda")
+  (authors "Guillaume Cartier")
+  (stage alpha)
+  (root "src")
+  (products (yoda (title "Yoda")
+                  (prefix "Yoda")
+                  (run yoda.run)
+                  (update yoda.run)
+                  (dependencies jazz)))
+  (project ".project"))

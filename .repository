@@ -1,0 +1,3 @@
+(repository Yoda
+
+  (library "lib"))

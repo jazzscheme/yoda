@@ -1,0 +1,22 @@
+;;;============
+;;;  Together
+;;;============
+;;;
+;;;; Yoda Run
+;;;
+;;;  The Initial Developer of the Original Code is Guillaume Cartier.
+;;;  Portions created by the Initial Developer are Copyright (C) 2022-2022
+;;;  the Initial Developer. All Rights Reserved.
+;;;
+;;;  Contributor(s):
+
+
+(module yoda.run jazz
+
+
+(definition (run-yoda descriptor)
+  (terminal 'welcome 'to 'yoda!))
+
+
+(register-product-run 'yoda
+  run-yoda))

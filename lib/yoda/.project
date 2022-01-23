@@ -1,0 +1,20 @@
+;;;==============
+;;;  JazzScheme
+;;;==============
+;;;
+;;;; Project
+;;;
+
+
+(data jazz.ide.data.project
+
+
+(import (jazz.project)
+        (jazz.editor.jazz))
+
+
+(form
+  (<Project>               name: yoda  description-file: {File :context ".package"}
+    (<Project-Directory>               directory: {Directory :context "src"}
+      (<Project-Directory>             directory: {Directory :context "src" "yoda"}
+        (<Jazz-File>       name: run   source: {File :context "src" "yoda" "run.jazz"}))))))
