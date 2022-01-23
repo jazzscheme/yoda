@@ -1,0 +1,9 @@
+;;;==============
+;;;  JazzScheme
+;;;==============
+;;;
+;;;; Yoda buildini
+;;;
+
+
+(jazz:repositories ".")

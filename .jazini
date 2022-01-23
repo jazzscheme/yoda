@@ -1,0 +1,10 @@
+;;;==============
+;;;  JazzScheme
+;;;==============
+;;;
+;;;; Yoda jazini
+;;;
+
+
+(jazz:default-safety 'develop)
+(jazz:default-target 'yoda)
