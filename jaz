@@ -1,0 +1,112 @@
+#!/bin/sh
+
+REL="$(dirname "$0")"
+
+JAZZ="$REL/jazz"
+JAZ="$JAZZ/jaz"
+
+REPOCOLOR='\033[1;34m'
+NOCOLOR='\033[0m'
+
+case $OSTYPE in
+    "msys" )
+        alias git='"/c/Program Files/Git/bin/git"'
+	     ;;
+esac
+
+feedback() {
+    case $OSTYPE in
+        "msys" )
+            echo -e "$1"
+	         ;;
+
+        * )
+            echo "$1"
+            ;;
+    esac
+}
+
+display_info () {
+    feedback "${REPOCOLOR}$1${NOCOLOR}"
+    if [ -d "$2" ]; then
+	     cd "$2" &&
+	     git log -1
+    fi
+}
+
+display_all_info () {
+    (display_info "Yoda" "$REL")
+    echo
+    (display_info "Jazz" "$JAZZ")
+}
+
+display_status () {
+    feedback "${REPOCOLOR}$1${NOCOLOR}"
+    if [ -d "$2" ]; then
+	     cd "$2" &&
+	     git status
+    fi
+}
+
+display_all_status () {
+    (display_status "Yoda" "$REL")
+    echo
+    (display_status "Jazz" "$JAZZ")
+}
+
+display_diff () {
+    feedback "${REPOCOLOR}$1${NOCOLOR}"
+    if [ -d "$2" ]; then
+	     cd "$2" &&
+	     git diff
+    fi
+}
+
+display_all_diff () {
+    (display_diff "Yoda" "$REL")
+    echo
+    (display_diff "Jazz" "$JAZZ")
+}
+
+pull () {
+    feedback "${REPOCOLOR}$1${NOCOLOR}"
+    if [ -d "$2" ]; then
+	     cd "$2" &&
+	     git pull
+    fi
+}
+
+pull_all () {
+    (pull "Yoda" "$REL")
+    echo
+    (pull "Jazz" "$JAZZ")
+}
+
+case "$1" in
+	"info" )
+		display_all_info
+		exit
+		;;
+
+	"status" )
+		display_all_status
+		exit
+		;;
+
+	"diff" )
+		display_all_diff
+		exit
+		;;
+
+	"pull" )
+		pull_all
+		exit
+		;;
+esac
+
+if [ ! -f "$JAZ" ]; then
+	echo "Unable to find jazz/jaz"
+	exit 1
+fi
+
+exec "$JAZ" "$@"
