@@ -1,0 +1,12 @@
+/bin
+/binaries
+/build
+/cache
+/jazz
+/gaea
+/jiri
+/*.patch
+.configuration
+.jaz
+.jazzini
+.DS_Store
